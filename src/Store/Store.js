@@ -4,6 +4,6 @@ import thunkMiddleware from "redux-thunk"
 
 const enhancer = applyMiddleware(thunkMiddleware);
 
-const Store = createStore(Reducer,enhancer);
+const Store = createStore(Reducer, enhancer);
 
 export default Store;

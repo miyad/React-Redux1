@@ -1,12 +1,11 @@
-import './App.css';
-import Home from "./Components/Home";
 import {Provider} from "react-redux";
 import Store from "./Store/Store";
+import Parent from "./Components/Parent/Parent";
 
 function App() {
   return (
       <Provider store={Store}>
-        <Home/>
+        <Parent/>
       </Provider>
   );
 }
