@@ -1,11 +1,11 @@
 import {Provider} from "react-redux";
 import Store from "./Store/Store";
-import Parent from "./Components/Parent/Parent";
+import RouteHandler from "./Components/Route/RouteHandler";
 
 function App() {
   return (
       <Provider store={Store}>
-        <Parent/>
+        <RouteHandler/>
       </Provider>
   );
 }

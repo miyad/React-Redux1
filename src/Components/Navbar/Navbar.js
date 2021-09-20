@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-
 import appLogo from '../../Logo/bee.png';
-import cartLogo from '../../Logo/cart.png';
-import {useDispatch, useSelector} from "react-redux";
+import Modal from "../Modal/Modal";
 
 const Navbar = () => {
     const showMenu = () => {
@@ -10,8 +8,7 @@ const Navbar = () => {
         setOpenMenu(!openMenu);
     }
     const [openMenu, setOpenMenu] = useState(false);
-    const dispatch = useDispatch();
-    const {totalCartAmount} = useSelector(state => state);
+
 
     return (
         <div>
@@ -83,9 +80,8 @@ const Navbar = () => {
                                 >Contact Us</a
                                 >
                         </div>
-                       <div className={"w-1/6 md:w-1/12 text-2xl grid grid-cols-2 justify-end items-end"}>
-                           <img src={cartLogo} alt="cart"/>
-                           {totalCartAmount}
+                       <div className={"w-1/6 md:w-1/12 text-2xl "}>
+                            <Modal/>
                        </div>
                     </div>
                 </div>

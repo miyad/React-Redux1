@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from "../Home/Home";
 import NotFound from "../NotFound/NotFound";
 
-const Parent = () => {
+const RouteHandler = () => {
     return (
         <Router>
             <Switch>
@@ -14,4 +14,4 @@ const Parent = () => {
     );
 };
 
-export default Parent;
+export default RouteHandler;
