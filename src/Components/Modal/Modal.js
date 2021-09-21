@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import cartLogo from "../../Logo/cart.png";
 import {useDispatch, useSelector} from "react-redux";
 import CartItem from "../CartItem/CartItem";
+import {remove_all_products} from "../../Actions/Actions";
 
 
 
@@ -11,7 +12,6 @@ const Modal = () => {
     const {totalCartAmount, products, cart} = useSelector(state => state);
     const getTotal = () => {
         let sum = 0;
-        console.log("cart = ",cart);
         cart.map(
             (e) =>
                 (sum += Number(
@@ -43,7 +43,7 @@ const Modal = () => {
                                     <h3 className="text-3xl font-semibold mx-4">Cart Items</h3>
                                     <button
                                         className="p-1 ml-auto bg-transparent  text-red-600 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                                        onClick={() => {console.log("modal close");setShowModal(false)}}
+                                        onClick={() => setShowModal(false)}
                                     >
                                         x
                                     </button>
@@ -87,8 +87,9 @@ const Modal = () => {
                                                 className={
                                                     "bg-red-500 col-span-2 p-2 mx-4  text-md rounded text-white"
                                                 }
-                                                onClick={(e) => {
-                                                    dispatch({ type: "reset" });
+                                                onClick={() => {
+                                                    if(window.confirm("Are you sure to clear the cart?"))
+                                                        dispatch(remove_all_products());
                                                 }}
                                             >
                                                 Clear Cart

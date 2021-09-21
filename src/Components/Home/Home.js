@@ -13,7 +13,6 @@ const Home = () => {
     useEffect(() => {
             dispatch(FetchData);
     }, [dispatch]);
-    
 
 
     return (

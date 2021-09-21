@@ -1,14 +1,19 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import deleteLogo from '../../Logo/delete.png';
-import {set_amount} from "../../Actions/Actions";
+import {remove_product, set_amount} from "../../Actions/Actions";
 
 const CartItem = ({id, amount}) => {
     const dispatch = useDispatch();
     const {products, cart} = useSelector(state => state);
     const handleInputChange = (e) => {
-        console.log("came here");
+        if(e.target.value === "0")
+        {
+            dispatch(remove_product(id));
+            return;
+        }
         const val = Number(e.target.value ? e.target.value : cart.find(item=>item.id===id).amount);
+
 
         dispatch(set_amount(id,val));
     };
@@ -33,7 +38,7 @@ const CartItem = ({id, amount}) => {
                     <input
                         onChange={(e) => handleInputChange(e)}
                         value={cart.find(e=>e.id===id).amount}
-                        min="1"
+                        min={0}
                         step={1}
                         type={"number"}
                         className="w-full rounded"
@@ -41,10 +46,7 @@ const CartItem = ({id, amount}) => {
                 </div>
             </div>
             <div className="col-span-2 ">= ${(price*amount).toFixed(2)}</div>
-            <img onClick={() => dispatch({
-                type: "removeItem",
-                data: {id, amount}
-            })} src={deleteLogo} className="cursor-pointer col-span-1 w-7 py-2" alt={"o"}/>
+            <img onClick={() => dispatch(remove_product(id)) } src={deleteLogo} className="cursor-pointer col-span-1 w-7 py-2" alt={"o"}/>
         </div>
     );
 };

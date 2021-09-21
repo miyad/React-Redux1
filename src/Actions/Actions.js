@@ -15,6 +15,19 @@ export const delete_from_cart = (id) => {
     }
 }
 
+export const remove_product = (id) => {
+    return {
+        type: REMOVE,
+        id
+    }
+}
+
+export const remove_all_products = () => {
+    return {
+        type: REMOVE_ALL
+    }
+}
+
 export const set_amount = (id, amount)=>{
     return {
         type: SET,

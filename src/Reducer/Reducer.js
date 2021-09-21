@@ -10,7 +10,7 @@ const initValue = {
 
 export const Reducer = (state = initValue, action) => {
     let {totalCartAmount, cart} = state;
-    const {type, id, amount} = action;
+    const {type, id} = action;
     const {payload} = action;
 
     switch (type){
@@ -21,29 +21,36 @@ export const Reducer = (state = initValue, action) => {
 
             return {...state, totalCartAmount: totalCartAmount + 1, cart};
         case SET:
-
-            console.log("in set case");
-            console.log("id = ",payload.id, " amount = ",payload.amount);
             cart.find(e=>e.id === payload.id)?
                 cart.find(e=>e.id===payload.id).amount = payload.amount:
                 cart.push(payload);
-            const sum = cart.map(item=>item.amount).reduce((x,y)=>x+y);
             return {
                 ...state,
-                totalCartAmount:sum,
+                totalCartAmount: cart.length?cart.map(item=>item.amount).reduce((prev,cur)=>prev+cur):0,
                 cart
             };
 
         case DELETE:
                 cart.find(cart_item=>cart_item.id === id).amount === 1?
                     cart = cart.filter(cart_item=>cart_item.id !== id): // filter method doesn't mutate the original array
-                    cart.find(cart_item=>cart_item.id === id).amount-=1;
-            return {...state,totalCartAmount: totalCartAmount-1,cart};
+                    cart.find(cart_item=>cart_item.id === id).amount -= 1;
+            return {...state, totalCartAmount: totalCartAmount-1, cart};
+        case REMOVE:
+            cart = cart.filter(cart_item=>cart_item.id !== id);
+            return {
+                ...state,
+                totalCartAmount: cart.length? cart.map(cart_item=>cart_item.amount).reduce((prev,cur) =>prev+cur): 0,
+                cart
+            }
+        case REMOVE_ALL:
+            return{
+                ...state,
+                totalCartAmount: 0,
+                cart: []
+            }
         case FETCH_DATA:
-            console.log("now fetching data");
-            return {totalCartAmount:Number(0),products: action.payload, cart:[]};
+            return {...state,totalCartAmount:totalCartAmount?totalCartAmount:Number(0),products: action.payload};
         default:
-            console.log("this is default case");
             return state;
     }
 

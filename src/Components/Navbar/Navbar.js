@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import appLogo from '../../Logo/bee.png';
+import appLogo from '../../Logo/main.png';
 import Modal from "../Modal/Modal";
 
 const Navbar = () => {
@@ -32,50 +32,53 @@ const Navbar = () => {
                                     </button>
                                     {openMenu?<div className="mx-w-8 mobile-menu">
                                         <ul className="">
-                                            <li className="active"><a href="index.html"
+                                            <li className="active"><a href="/" onClick={e=>e.preventDefault()}
                                                                       className="block text-sm px-2 py-4 hover:text-white hover:bg-green-500 font-semibold">Home</a>
                                             </li>
-                                            <li><a href="#services"
+                                            <li><a href="/" onClick={e=>e.preventDefault()}
                                                    className="block text-sm px-2 py-4 hover:text-white hover:bg-green-500 transition duration-300 font-semibold">Services</a>
                                             </li>
-                                            <li><a href="#about"
+                                            <li><a href="/" onClick={e=>e.preventDefault()}
                                                    className="block text-sm px-2 py-4 hover:text-white hover:bg-green-500 transition duration-300 font-semibold">About</a>
                                             </li>
-                                            <li><a href="#contact"
-                                                   className="block text-sm px-2 py-4 hover:text-white hover:bg-green-500 transition duration-300 font-semibold">Contact
-                                                Us</a></li>
+                                            <li><a href="/" onClick={e=>e.preventDefault()}
+                                                   className="block text-sm px-2 py-4 hover:text-white hover:bg-green-500 transition duration-300 font-semibold">
+                                                Contact Us</a></li>
                                         </ul>
                                     </div>:null}
                                 </div>
 
                             <div className={"flex mx-8"}>
 
-                                    <a href="#" className="flex md:py-4 px-2">
+                                    <a href="/" className="flex md:py-4 px-2" onClick={e=>e.preventDefault()}>
                                         <img src={appLogo} alt="Logo" className="h-8 w-8 mr-2"/>
                                         <span className="font-semibold text-gray-500 text-lg"
-                                        >Navigation</span
+                                        >LeadShop</span
                                         >
                                     </a>
                             </div>
                         <div className={"hidden md:flex justify-between items-baseline md:w-1/2"}>
                                 <a
                                     onClick={e=>e.preventDefault()}
-                                    href="#"
+                                    href="/"
                                     className="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold "
                                 >Home</a
                                 >
                                 <a
-                                    href=""
+                                    onClick={e=>e.preventDefault()}
+                                    href="/"
                                     className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
                                 >Services</a
                                 >
                                 <a
-                                    href=""
+                                    onClick={e=>e.preventDefault()}
+                                    href="/"
                                     className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
                                 >About</a
                                 >
                                 <a
-                                    href=""
+                                    onClick={e=>e.preventDefault()}
+                                    href="/"
                                     className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
                                 >Contact Us</a
                                 >
