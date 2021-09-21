@@ -1,5 +1,5 @@
 import {ActionTypes} from "./ActionTypes";
-const {ADD, SET, DELETE, REMOVE, REMOVE_ALL, FETCH_DATA} = ActionTypes;
+const {ADD, SET, DELETE, REMOVE, REMOVE_ALL,SAVA_STATE, FETCH_DATA} = ActionTypes;
 
 export const add_to_cart = (id) => {
     return {
@@ -32,6 +32,12 @@ export const set_amount = (id, amount)=>{
     return {
         type: SET,
         payload: {id,amount}
+    }
+}
+export const save_state = (cart)=>{
+    return {
+        type: SAVA_STATE,
+        cart
     }
 }
 

@@ -32,7 +32,7 @@ const Checkout = () => {
                 <div>${getTotal()}</div>
             </div>
             <Link to="/">
-                <button onClick={(e) => dispatch(remove_all_products())} className="bg-blue-700 font-bold text-white cursor-pointer mt-6 p-2 rounded hover:bg-black focus:ring-blue-400" >Go Home</button>
+                <button onClick={() => dispatch(remove_all_products())} className="bg-blue-700 font-bold text-white cursor-pointer mt-6 p-2 rounded hover:bg-black focus:ring-blue-400" >Go Home</button>
             </Link>
         </div>
     );

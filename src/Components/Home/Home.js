@@ -4,12 +4,22 @@ import {FetchData} from "../../Actions/FetchData";
 import Loading from "../Loading/Loading";
 import Navbar from "../Navbar/Navbar";
 import Product from "../Product/Product";
+import {save_state} from "../../Actions/Actions";
 
 const Home = () => {
 
     const dispatch = useDispatch();
-    const {products} = useSelector(state => state);
+    const {products, cart} = useSelector(state => state);
 
+    useEffect(()=>{
+        const cart = localStorage.getItem("cartItems");
+        if(cart)
+            dispatch(save_state(JSON.parse(cart)));
+
+    },[dispatch]);
+    useEffect(()=> {
+        localStorage.setItem("cartItems", JSON.stringify(cart));
+    });
     useEffect(() => {
             dispatch(FetchData);
     }, [dispatch]);

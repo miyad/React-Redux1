@@ -1,7 +1,7 @@
 import {ActionTypes} from "../Actions/ActionTypes";
 
 
-const {ADD, SET, DELETE, REMOVE, REMOVE_ALL, FETCH_DATA} = ActionTypes;
+const {ADD, SET, DELETE, REMOVE, REMOVE_ALL,SAVA_STATE, FETCH_DATA} = ActionTypes;
 const initValue = {
     totalCartAmount: 0,
     products: [],
@@ -43,10 +43,18 @@ export const Reducer = (state = initValue, action) => {
                 cart
             }
         case REMOVE_ALL:
+            localStorage.setItem("cartItems", JSON.stringify([]));
             return{
                 ...state,
                 totalCartAmount: 0,
                 cart: []
+            }
+        case SAVA_STATE:
+            return{
+                ...state,
+                totalCartAmount: action.cart.length? action.cart.map(cart_item=>cart_item.amount).reduce((prev,cur)=>prev+cur):0,
+                cart: action.cart
+
             }
         case FETCH_DATA:
             return {...state,totalCartAmount:totalCartAmount?totalCartAmount:Number(0),products: action.payload};

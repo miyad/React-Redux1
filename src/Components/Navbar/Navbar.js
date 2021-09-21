@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import appLogo from '../../Logo/main.png';
+import appLogo from '../../Logo/mainLogo.png';
 import Modal from "../Modal/Modal";
 
 const Navbar = () => {

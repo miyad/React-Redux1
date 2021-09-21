@@ -34,10 +34,10 @@ const Modal = () => {
             </div>
             {showModal ? (
                 <div>
-                    <div className=" justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                         <div className="relative w-auto my-6 mx-auto max-w-3xl">
                             {/*content*/}
-                            <div className="border-0 rounded-lg shadow-lg  w-full bg-white">
+                            <div className="border-0 m-auto rounded-lg shadow-lg  w-5/6 content-center bg-white">
                                 {/*header*/}
                                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                                     <h3 className="text-3xl font-semibold mx-4">Cart Items</h3>
@@ -57,7 +57,7 @@ const Modal = () => {
                                             <p>Cart is Empty!</p>
                                         )}
                                     </div>
-                                    <div className="overflow-y-scroll  max-h-96 min-w-60">
+                                    <div className="overflow-y-scroll max-h-72 md:max-h-96 min-w-60">
                                         {cart.map((product, index) => (
                                             <CartItem
                                                 id={product.id}
@@ -68,9 +68,9 @@ const Modal = () => {
                                     </div>
                                     {cart.length > 0 ? (
                                         <div>
-                                            <div className="grid grid-cols-8">
-                                                <div className="col-span-5 flex justify-end">Total</div>
-                                                <div className={" col-span-2 flex justify-end"}>
+                                            <div className="grid grid-cols-2 mx-4 md:grid-cols-8">
+                                                <div className="md:col-span-5 flex justify-end">Total</div>
+                                                <div className={" md:col-span-2 flex justify-end"}>
                                                     $ {getTotal()}
                                                 </div>
                                             </div>

@@ -21,7 +21,7 @@ const CartItem = ({id, amount}) => {
     return (
         <div
             className={
-                "rounded-md grid grid-cols-12 justify-start items-end my-4 p-2 bg-blue-200 text-lg"
+                " grid grid-cols-6 md:grid-cols-12 justify-start items-end  p-2 bg-blue-100 rounded-md my-4 md:my-8 mx-4 text-lg"
             }
         >
             <div className="col-span-6 flex items-center justify-between">
