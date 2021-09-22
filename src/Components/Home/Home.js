@@ -10,6 +10,7 @@ const Home = () => {
 
     const dispatch = useDispatch();
     const {products, cart} = useSelector(state => state);
+    console.log("products", products);
 
     useEffect(()=>{
         const cart = localStorage.getItem("cartItems");

@@ -1,4 +1,3 @@
-import React from 'react';
 import loadingGif from '../../Logo/loading.gif';
 const Loading = () => {
     return (
