@@ -30,7 +30,6 @@ export const FetchData = async(dispatch)=>{
 
    if(!localStorage.getItem("isLoaded"))
     {
-
                 const data = JSON.parse(localStorage.getItem("fakeApi"));
                 let newData = [];
                 data.map((item) =>(
