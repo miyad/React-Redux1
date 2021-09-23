@@ -26,14 +26,12 @@ export const FetchData = async(dispatch)=>{
                 console.log(error);
             });
     }
-
     dispatch(fetch_action(JSON.parse(localStorage.getItem("fakeApi"))));
 
    if(!localStorage.getItem("isLoaded"))
     {
-        await axios.get(url)
-            .then(response => {
-                const {data} = response;
+
+                const data = JSON.parse(localStorage.getItem("fakeApi"));
                 let newData = [];
                 data.map((item) =>(
                     toDataUrl(item.image, function(myBase64){
@@ -43,11 +41,6 @@ export const FetchData = async(dispatch)=>{
                         return myBase64;
                     })
                 ))
-
-            })
-            .catch(error => {
-                console.log(error);
-            });
         localStorage.setItem("isLoaded","true");
     }
 }
