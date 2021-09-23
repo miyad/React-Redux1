@@ -4,7 +4,6 @@ import Modal from "../Modal/Modal";
 
 const Navbar = () => {
     const showMenu = () => {
-        console.log("menu showing...");
         setOpenMenu(!openMenu);
     }
     const [openMenu, setOpenMenu] = useState(false);
