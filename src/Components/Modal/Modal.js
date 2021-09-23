@@ -4,22 +4,13 @@ import cartLogo from "../../Logo/cart.png";
 import {useDispatch, useSelector} from "react-redux";
 import CartItem from "../CartItem/CartItem";
 import {remove_all_products} from "../../Actions/Actions";
+import {getTotal} from "../../HelperMethods/getTotal";
 
 
 
 const Modal = () => {
     const dispatch = useDispatch();
     const {totalCartAmount, products, cart} = useSelector(state => state);
-    const getTotal = () => {
-        let sum = 0;
-        cart.map(
-            (e) =>
-                (sum += Number(
-                    Number(e.amount) * Number(products.find((p) => p.id === e.id).price)
-                ))
-        );
-        return sum.toFixed(2);
-    };
 
     const [showModal, setShowModal] = useState(false);
 
@@ -71,7 +62,7 @@ const Modal = () => {
                                             <div className="grid grid-cols-2 mx-4 md:grid-cols-8">
                                                 <div className="md:col-span-5 flex justify-end">Total</div>
                                                 <div className={" md:col-span-2 flex justify-end"}>
-                                                    $ {getTotal()}
+                                                    $ {getTotal(cart,products)}
                                                 </div>
                                             </div>
                                         </div>

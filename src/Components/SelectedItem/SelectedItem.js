@@ -1,10 +1,10 @@
 import React from "react";
-import {useSelector} from "react-redux";
-
+import {getTotal} from "../../HelperMethods/getTotal";
 
 const SelectedItem = ({ id, amount }) => {
-    const {products,cart} = useSelector(state => state);
-    const { title, price, image } = products.find((e) => e.id === id);
+    const products= JSON.parse(localStorage.getItem("fakeApi"));
+    const product = products.find(product => product.id === id);
+    const { title, price, image } = product;
 
     return (
         <div
@@ -24,13 +24,11 @@ const SelectedItem = ({ id, amount }) => {
                 <div className="px-2 flex">
                     <div className="px-1">x</div>
                     <div>
-                        {cart.find((obj) => obj.id === id)
-                            ? cart.find((obj) => obj.id === id).amount
-                            : 0}
+                        {amount}
                     </div>
                 </div>
             </div>
-            <div className="col-span-1">= ${(price * amount).toFixed(2)}</div>
+            <div className="col-span-1">= ${getTotal([product],products)}</div>
         </div>
     );
 };
